@@ -1,0 +1,5 @@
+﻿  Module.ixx
+C:\Users\DELL\source\repos\DSA01\Module.ixx(1,1): error C3378: a declaration can be exported only from a module interface unit
+C:\Users\DELL\source\repos\DSA01\Module.ixx(1,8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\DELL\source\repos\DSA01\Module.ixx(1,15): error C2146: syntax error: missing ';' before identifier 'Module'
+C:\Users\DELL\source\repos\DSA01\Module.ixx(3,1): error C3378: a declaration can be exported only from a module interface unit
