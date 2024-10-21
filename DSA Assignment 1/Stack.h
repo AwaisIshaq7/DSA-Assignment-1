@@ -4,14 +4,16 @@
 #include <stdexcept>
 
 template <typename T>
-class Stack {
+class Stack 
+{
 private:
     T* arr;
     int capacity;
     int top;
 
 public:
-    Stack(int size = 10) : capacity(size), top(-1) {
+    Stack(int size = 10) : capacity(size), top(-1)
+{
         arr = new T[capacity];
     }
 
@@ -19,7 +21,8 @@ public:
         delete[] arr;
     }
 
-    void push(const T& item) {
+    void push(const T& item) 
+{
         if (top + 1 >= capacity) {
             resize();
         }
@@ -27,19 +30,22 @@ public:
     }
 
     void pop() {
-        if (!isEmpty()) {
+        if (!isEmpty())
+        {
             --top;
         }
     }
 
-    T peek() const {
+    T peek() const
+    {
         if (!isEmpty()) {
             return arr[top];
         }
         throw std::runtime_error("Stack is empty");
     }
 
-    bool isEmpty() const {
+    bool isEmpty() const 
+    {
         return top == -1;
     }
 
@@ -48,10 +54,12 @@ public:
     }
 
 private:
-    void resize() {
+    void resize() 
+{
         capacity *= 2;
         T* newArr = new T[capacity];
-        for (int i = 0; i < size(); ++i) {
+        for (int i = 0; i < size(); ++i)
+        {
             newArr[i] = arr[i];
         }
         delete[] arr;
