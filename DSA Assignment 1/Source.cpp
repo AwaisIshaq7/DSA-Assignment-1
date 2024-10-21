@@ -9,8 +9,9 @@ using namespace std;
 
 int main() {
     int Choice;
-    ifstream file("Expressions.txt"); // Adjust the file path as necessary
-    if (!file) {
+    ifstream file("Expressions.txt"); 
+    if (!file)
+    {
         cerr << "Unable to open file." << endl;
         return 1;
     }
@@ -19,14 +20,16 @@ int main() {
     int count = 0;
 
     // Read expressions from the file
-    while (count < 10 && getline(file, expressions[count])) {
+    while (count < 10 && getline(file, expressions[count])) 
+    {
         count++;
     }
     file.close();
 
     // Display the expressions
     cout << "Available expressions:\n";
-    for (int i = 0; i < count; ++i) {
+    for (int i = 0; i < count; ++i) 
+    {
         cout << i + 1 << ": " << expressions[i] << endl;
     }
 
@@ -36,7 +39,8 @@ int main() {
         cout << "\nSelect a line number to check its expression: ";
         cin >> lineNumber;
 
-        if (lineNumber < 1 || lineNumber > count) {
+        if (lineNumber < 1 || lineNumber > count)
+        {
             cout << "\nInvalid line number." << endl;
             return 1;
         }
@@ -47,8 +51,9 @@ int main() {
         bool isValid;
         string exprType;
 
-        // Determine if the expression is infix or postfix based on parentheses
-        if (selectedExpression.find('(') != string::npos || selectedExpression.find(')') != string::npos) {
+        // To Determine if the expression is infix or postfix based on parentheses
+        if (selectedExpression.find('(') != string::npos || selectedExpression.find(')') != string::npos)
+        {
             isValid = validator.isValidInfix(selectedExpression);
             exprType = "infix";
         }
@@ -58,14 +63,15 @@ int main() {
         }
 
         // Output the result
-        if (isValid) {
+        if (isValid) 
+        {
             cout << "\nThe " << exprType << " expression is valid." << endl;
         }
         else {
             cout << "\nThe " << exprType << " expression is invalid." << endl;
         }
 
-        cout << setw(20) << " *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* " << endl;
+        cout << "\t*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* " << endl;
         cout << "Press 1 to continue and select again or 0 to exit: ";
         cin >> Choice;
     } while (Choice == 1);
