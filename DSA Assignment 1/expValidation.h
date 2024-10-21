@@ -10,25 +10,31 @@ using namespace std;
 class expValidation {
 public:
     // Validate infix expression
-    bool isValidInfix(const string& expression) {
+    bool isValidInfix(const string& expression) 
+{
         Stack<char> stack;
         char prevChar = ' ';
         bool wasOperator = true;      // To track if the last character was an operator
 
-        for (char ch : expression) {
-            if (ch == '(') {
+        for (char ch : expression) 
+        {
+            if (ch == '(')
+            {
                 stack.push(ch);
                 wasOperator = false;
             }
-            else if (ch == ')') {
+            else if (ch == ')') 
+            {
                 if (stack.isEmpty() || wasOperator) return false;
                 stack.pop();
             }
-            else if (!isspace(ch) && !isdigit(ch) && !isOperator(ch)) {
+            else if (!isspace(ch) && !isdigit(ch) && !isOperator(ch)) 
+            {
                 return false; // Invalid character
             }
 
-            if (isOperator(ch)) {
+            if (isOperator(ch))
+            {
                 if (wasOperator) return false; // Two operators in a row
                 wasOperator = true;
             }
@@ -41,19 +47,22 @@ public:
     }
 
     // Validate postfix expression
-    bool isValidPostfix(const string& expression) {
+    bool isValidPostfix(const string& expression)
+{
         Stack<int> stack;
         istringstream tokens(expression);
         string token;
 
         while (tokens >> token) {
-            if (isOperator(token[0]) && token.size() == 1) {
-                if (stack.size() < 2) return false; // Not enough operands
-                stack.pop(); // Pop two operands
+            if (isOperator(token[0]) && token.size() == 1)
+            {
+                if (stack.size() < 2) return false; // If there are  not enough operands
+                stack.pop(); // Tp Pop two operands
                 stack.push(0); // Push result (dummy value)
             }
-            else if (isdigit(token[0])) {
-                stack.push(stoi(token)); // Push operand
+            else if (isdigit(token[0]))
+            {
+                stack.push(stoi(token)); // Push the operand
             }
             else {
                 return false; // Invalid character
@@ -63,7 +72,8 @@ public:
     }
 
 private:
-    bool isOperator(char ch) {
+    bool isOperator(char ch) 
+{
         return ch == '+' || ch == '-' || ch == '*' || ch == '/';
     }
 };
